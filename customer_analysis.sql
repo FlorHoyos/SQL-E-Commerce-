@@ -41,7 +41,7 @@ monthly_customers AS (
   WHERE o.order_purchase_timestamp IS NOT NULL AND o.order_status = 'delivered'
 ),
 
-----Customers whose first-ever purchase happened in this month
+----Customers whose first ever purchase happened in this month
 new_customers AS (
   SELECT
     mc.monthbyyear,
