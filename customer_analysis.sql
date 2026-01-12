@@ -28,10 +28,8 @@ WITH first_purchase AS (
     c.customer_unique_id,
     DATE_TRUNC('month', MIN(o.order_purchase_timestamp)) AS first_purchase_month
   FROM orders o
-  JOIN customers c
-    ON c.customer_id = o.customer_id
-  WHERE o.order_purchase_timestamp IS NOT NULL
-    AND o.order_status = 'delivered'
+  JOIN customers c ON c.customer_id = o.customer_id
+  WHERE o.order_purchase_timestamp IS NOT NULL AND o.order_status = 'delivered'
   GROUP BY c.customer_unique_id
 ),
 monthly_customers AS (
@@ -39,10 +37,8 @@ monthly_customers AS (
     DATE_TRUNC('month', o.order_purchase_timestamp) AS monthbyyear,
     c.customer_unique_id
   FROM orders o
-  JOIN customers c
-    ON c.customer_id = o.customer_id
-  WHERE o.order_purchase_timestamp IS NOT NULL
-    AND o.order_status = 'delivered'
+  JOIN customers c ON c.customer_id = o.customer_id
+  WHERE o.order_purchase_timestamp IS NOT NULL AND o.order_status = 'delivered'
 ),
 
 ----Customers whose first-ever purchase happened in this month
@@ -51,8 +47,7 @@ new_customers AS (
     mc.monthbyyear,
     COUNT(DISTINCT mc.customer_unique_id) AS new_customers
   FROM monthly_customers mc
-  JOIN first_purchase fp
-    ON fp.customer_unique_id = mc.customer_unique_id
+  JOIN first_purchase fp ON fp.customer_unique_id = mc.customer_unique_id
   WHERE mc.monthbyyear = fp.first_purchase_month
   GROUP BY monthbyyear
 ),
@@ -62,18 +57,12 @@ repeat_customers AS (
     mc.monthbyyear,
     COUNT(DISTINCT mc.customer_unique_id) AS repeat_customers
   FROM monthly_customers mc
-  JOIN first_purchase fp
-    ON fp.customer_unique_id = mc.customer_unique_id
+  JOIN first_purchase fp ON fp.customer_unique_id = mc.customer_unique_id
   WHERE mc.monthbyyear > fp.first_purchase_month
   GROUP BY monthbyyear
 )
-SELECT
-  m.monthbyyear,
-  n.new_customers,
-  r.repeat_customers
+SELECT m.monthbyyear, n.new_customers, r.repeat_customers
 FROM (SELECT DISTINCT monthbyyear FROM monthly_customers) m
-LEFT JOIN new_customers n
-  ON n.monthbyyear = m.monthbyyear
-LEFT JOIN repeat_customers r
-  ON r.monthbyyear = m.monthbyyear
+LEFT JOIN new_customers n ON n.monthbyyear = m.monthbyyear
+LEFT JOIN repeat_customers r ON r.monthbyyear = m.monthbyyear
 ORDER BY monthbyyear;
