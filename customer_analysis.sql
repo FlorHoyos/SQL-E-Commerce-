@@ -1,0 +1,19 @@
+SELECT
+-- select customer state from c table
+  c.customer_state,
+-- price+freight value then sum all together from table oi and rename revenue
+  SUM(oi.price + oi.freight_value) AS revenue
+-- start with table customers and rename c 
+FROM customers c
+-- join from table orders(rename o) connect it with customer id
+JOIN orders o ON o.customer_id = c.customer_id
+-- join from table order_item(rename oi) connect it with order id
+JOIN order_items oi ON oi.order_id = o.order_id
+-- where revevue reflects delivered only
+WHERE order_status = 'delivered'
+--group by state
+GROUP BY c.customer_state
+--order by revenue from big to small
+ORDER BY revenue DESC
+
+
