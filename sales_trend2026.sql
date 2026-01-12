@@ -9,8 +9,8 @@ SELECT
 FROM orders a
 -- joins orders table to order_items(renamed b) table by order_id 
 JOIN order_items b ON a.order_id = b.order_id
--- filter orders with no time stamp, takes it out
-WHERE order_purchase_timestamp IS NOT NULL
+-- filter orders with no time stamp, takes it out and revenue is for delivered
+WHERE a.order_purchase_timestamp IS NOT NULL AND a.order_status = 'delivered'
 -- groups by month of the year
 GROUP BY MonthByYear
 -- orders by month of year asc
