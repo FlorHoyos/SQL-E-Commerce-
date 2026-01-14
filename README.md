@@ -2,7 +2,9 @@
 ## 🛒 Olist Brazilian E-Commerce SQL Project  
 **Data Analytics Portfolio Project – Flor Hoyos**
 
-This project analyzes the Olist Brazilian E-Commerce dataset using PostgreSQL and Tableau. I built a complete relational database, validated the data, performed exploratory analysis, and generated business insights related to sales, customer behavior, delivery performance, and seller operations.
+This project analyzes the Olist Brazilian E-Commerce dataset using PostgreSQL .
+I built a complete relational database, validated the data, performed exploratory analysis,
+and generated business insights related to sales, customer behavior, delivery performance, and seller operations.
 
 ---
 
