@@ -124,7 +124,7 @@ This helps identify:
 
 ---
 
-## 📈 5. Tableau Dashboard + Story
+## 📈 5.Story
 
 Interactive dashboards were built to answer:
 
