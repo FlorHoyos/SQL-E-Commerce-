@@ -2,13 +2,16 @@
 ## 🛒 Olist Brazilian E-Commerce SQL Project  
 **Data Analytics Portfolio Project – Flor Hoyos**
 
-This project analyzes the Olist Brazilian E-Commerce dataset using PostgreSQL and Tableau. I built a complete relational database, validated the data, and developed four core analytical modules to generate business insights related to sales performance, customer behavior, product and seller dynamics, and delivery experience.
+This project analyzes the Olist Brazilian E-Commerce dataset using PostgreSQL. 
+I built a complete relational database, validated the data, 
+and developed four core analytical modules to generate business insights related 
+to sales performance, customer behavior, product and seller dynamics, and delivery experience.
 
 ---
 
 ## 📂 Project Structure
 
-This project is organized into **four main SQL analysis files**, each focusing on a specific business area:
+This project is organized into four main SQL analysis files, each focusing on a specific business area:
 
 1. `sales_trend.sql` – Monthly sales and revenue trends  
 2. `customer_analysis.sql` – Customer behavior, retention, and geographic distribution  
@@ -81,8 +84,10 @@ This forms the baseline performance view of the business.
 
 ### 🧠 Customer Analysis (`customer_analysis.sql`)
 
-- **Revenue by State (`revenuebystate.csv`)** highlights which customer states generate the most revenue and where demand is concentrated geographically.  
-- **New vs Repeat Customers (`repeatvsnewcustomer.csv`)** tracks customer retention over time by separating first-time buyers from returning customers.
+- **Revenue by State (`revenuebystate.csv`)**
+- highlights which customer states generate the most revenue and where demand is concentrated geographically.  
+- **New vs Repeat Customers (`repeatvsnewcustomer.csv`)**
+- tracks customer retention over time by separating first-time buyers from returning customers.
 
 This helps identify:
 - High-performing regions and potential expansion opportunities  
@@ -118,9 +123,13 @@ This reveals that:
 
 ### 🚚 Delivery Performance & Customer Satisfaction (`delivery_reviews.sql`)
 
-This section analyzes how delivery speed impacts customer satisfaction by examining the relationship between delivery time and review score.
+This section analyzes how delivery speed impacts customer satisfaction 
+by examining the relationship between delivery time and review score.
 
-Using order-level data, I calculated the number of days between the purchase date and the delivery date for each delivered order. I then grouped orders by their review score (1–5) and computed the average delivery time for each group.
+Using order-level data, I calculated the number of days between the purchase date 
+and the delivery date for each delivered order. 
+I then grouped orders by their review score (1–5) and 
+computed the average delivery time for each group.
 
 **Output files:**
 - `deliverydays.csv` – Order-level dataset containing delivery time (in days) and review score.  
@@ -131,13 +140,14 @@ Key insights from this analysis include:
 - Higher-rated orders are generally delivered more quickly.  
 - Delivery performance is a major driver of customer satisfaction.  
 
-This finding highlights the importance of logistics and fulfillment speed in shaping customer experience. Improvements in delivery timelines could directly contribute to higher customer ratings, better retention, and stronger marketplace trust.
+This finding highlights the importance of logistics and fulfillment speed in shaping customer experience. 
+Improvements in delivery timelines could directly contribute to higher customer ratings, better retention, and stronger marketplace trust.
 
 ---
 
-## 📈 5. Tableau Dashboard + Story
+## 📈 5. Story
 
-Interactive dashboards were built to answer:
+Questions that were answered:
 
 - How do sales and revenue change over time?  
 - Which customer states generate the most revenue?  
@@ -146,8 +156,6 @@ Interactive dashboards were built to answer:
 - Which sellers control the most revenue?  
 - How does delivery speed impact customer satisfaction?  
 
-These dashboards allow stakeholders to explore trends dynamically.
-
 ---
 
 ## 🚀 Tools Used
@@ -155,7 +163,6 @@ These dashboards allow stakeholders to explore trends dynamically.
 - PostgreSQL  
 - pgAdmin 4  
 - SQL (joins, CTEs, window functions, aggregations)  
-- Tableau Public  
 - GitHub for version control  
 
 ---
@@ -163,4 +170,4 @@ These dashboards allow stakeholders to explore trends dynamically.
 ## 👩🏻‍💻 Author
 
 **Flor Hoyos**  
-Data Analyst | SQL · Tableau · Python
+Data Analyst | SQL · Tableau 
