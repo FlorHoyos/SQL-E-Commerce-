@@ -107,11 +107,4 @@ ORDER BY ct.category_revenue DESC;
 
 
 
--- PRODUCTS NEVER SOLD
 
-SELECT p.product_category_name, COUNT(*) AS unsold_product
-FROM products p
-LEFT JOIN order_items oi ON p.product_id = oi.order_id 
-WHERE oi.product_id IS NULL
-GROUP BY p.product_category_name, oi.order_id
-ORDER BY unsold_product DESC
