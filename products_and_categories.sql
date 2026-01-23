@@ -1,3 +1,6 @@
+-- Which product categories do not have an English translation, 
+-- How many products fall into each?
+
 SELECT COUNT(p.product_id), p.product_category_name, pt.product_category_name_english
 FROM products p
 
