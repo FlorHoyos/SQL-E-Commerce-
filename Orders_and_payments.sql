@@ -23,3 +23,22 @@ SELECT t.Monthbyyear,
 FROM total_orders t
 LEFT JOIN cancelled c ON c.Monthbyyear = t.Monthbyyear
 ORDER BY t.Monthbyyear;
+
+-------------------------------------------------------------------------------
+
+-- Group payments into installment buckets 
+-- Groups (1, 2-6, 7+)
+-- count how many payments fall into each bucket
+
+WITH count_payments  AS (SELECT order_id, 
+CASE
+  WHEN payment_installments = 1 THEN '1'
+  WHEN payment_installments BETWEEN 2 AND 6 THEN '2–6'
+  ELSE '7+'
+END AS buckets
+FROM order_payments)
+
+SELECT buckets, COUNT(order_id) AS count_inst FROM count_payments
+
+GROUP BY buckets 
+ORDER BY buckets ASC
